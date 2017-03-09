@@ -1,27 +1,25 @@
 <?
 /**
- * Plugin Name: Sendy WPCF7
- * Description: Sendy integration with WP Contact Form 7
- * Author: Ryan Snowden
- * Author URI: http://crystal-asia.com
+ * Plugin Name: vmail
+ * Description: vMail integration with WP Contact Form 7
  * License: MIT
  * Version: 1.0
  */
 
-add_action('init', 'sendywpcf_init');
+add_action('init', 'vmail_init');
 
 /**
  * Check that WPCF is installed and add in hooks.
  *
  * @return bool
  */
-function sendywpcf_init() {
+function vmail_init() {
 
 	add_action( 'wpcf7_mail_sent', 'subscribe_from_cf7');
 	if (!function_exists('wpcf7_add_shortcode')) {
 		return false;
 	}
-	wpcf7_add_shortcode('sendywpcf', 'get_list_id');
+	wpcf7_add_shortcode('vmail', 'get_list_id');
 
 	return true;
 }
